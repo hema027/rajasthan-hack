@@ -1,0 +1,97 @@
+brands:
+  - phonepe
+  - paytm
+  - gpay
+  - bhim
+  - sbi
+  - hdfc
+
+edge_weights:
+  vpa: 1.0
+  phone: 1.0
+  tg_bot: 1.0
+  tg_handle: 0.9
+  apk_cert: 1.0
+  kit_hash: 1.0
+  apk_hash: 0.9
+  favicon_hash: 0.8
+  cert_fp: 0.5
+  nameserver: 0.4
+  ip: 0.2
+  asn: 0.1
+  registrar: 0.1
+
+strong_threshold: 0.8
+hub_max_fraction: 0.25
+louvain_resolution: 1.0
+louvain_split: true
+random_seed: 42
+
+thresholds:
+  phish: 0.7
+  suspicious: 0.4
+
+prototype_scorer:
+  weights:
+    password_or_pin_input: 0.25
+    cross_origin_form_action: 0.20
+    unauthorized_brand_domain: 0.25
+    lure_keywords: 0.10
+    punycode_or_homoglyph: 0.10
+    risky_tld: 0.10
+    exfil_endpoint: 0.20
+  allowlist:
+    phonepe: ["phonepe.com"]
+    paytm: ["paytm.com", "paytmbank.com"]
+    gpay: ["google.com", "pay.google.com"]
+    bhim: ["bhimupi.org.in", "npci.org.in"]
+    sbi: ["onlinesbi.sbi", "sbi.co.in"]
+    hdfc: ["hdfcbank.com"]
+  lure_keywords:
+    - "kyc"
+    - "verify"
+    - "cashback"
+    - "lottery"
+    - "reward"
+    - "blocked"
+    - "pan"
+    - "aadhaar"
+    - "refund"
+    - "urgent"
+    - "claim"
+    - "winner"
+    - "pin"
+  risky_tlds:
+    - ".xyz"
+    - ".top"
+    - ".club"
+    - ".icu"
+    - ".tk"
+    - ".ml"
+    - ".ga"
+    - ".cf"
+    - ".gq"
+    - ".buzz"
+    - ".live"
+    - ".pw"
+
+fetch:
+  mode: replay
+  concurrency: 8
+  timeout_s: 20
+  settle_ms: 800
+  cache_dir: data/cache
+  sites_dir: data/sites
+  ua_profiles:
+    mobile: "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36"
+    desktop: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+
+corpus:
+  seed: 7
+  n_campaigns: 8
+  campaign_sizes: [4, 6, 8, 10, 12, 15, 20, 25]
+  n_singletons: 20
+  n_hard_negatives: 40
+  n_plain_benign: 30
+  heldout_brand: bhim
+  train_fraction: 0.7
