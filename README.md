@@ -1,52 +1,42 @@
-# RAKSHA-HACK // Unified Cyber Fraud & Scam Attribution Console
-**Rajasthan Police Cyber Security Hackathon 2026 (R4C — Problem Statement PS01)**  
-*Cyber Fraud / Phishing / Malicious Apps: Scam Message & Phishing Link Detection with Fake Loan / Investment App and Fraudulent Website Analysis*
+# 🛡️ THADAM — The Intelligent Cyber-Fraud Investigation Companion
+
+**Problem Statement:** PS01 · Cyber Fraud / Phishing / Malicious Apps  
+**Title:** Scam Message & Phishing Link Detection with Fake Loan / Investment App and Fraudulent Website Analysis  
+**Event:** Rajasthan Police Cyber Security Hackathon 2026 (R4C)  
+**Team:** DYNAMITE  
 
 ---
 
-## Overview
-**RAKSHA-HACK** is a law-enforcement-grade cyber-intelligence and digital forensics platform built for the **Rajasthan Cyber Crime Control Centre (R4C)**. Fraud syndicates routinely reuse the same UPI VPAs, phone numbers, domains, and C2 endpoints across SMS/WhatsApp lures, fake loan/investment Android APKs, and fraudulent Ponzi or betting websites—yet victims report these channels in isolation.
+## 📋 Problem Statement (5 Key Challenges)
 
-**RAKSHA-HACK** unifies multi-channel ingestion, explainable risk scoring (**High / Medium / Low Risk**), cross-channel syndicate attribution, and automated police takedown dossier generation into a single investigation console.
-
----
-
-## Core Capabilities (PS01 Alignment)
-
-### 1. Multi-Channel Intake & Static Scanner
-* **SMS, WhatsApp, Email & URL Analyzer:** Detects urgency lures, fake KYC/electricity/parcel warnings, brand impersonation (PhonePe, Paytm, GPay, BHIM, SBI, HDFC), risky TLDs, and look-alike domains.
-* **Fraudulent Website / Ponzi & Betting Scanner:** Flags guaranteed-ROI claims, MLM referral schemes, betting lures, and extracts UPI IDs (`@upi`, `@okicici`), phone numbers, domains, and cryptocurrency collection wallets (ERC-20, TRC-20, BTC).
-* **Android APK Static Inspector:** Safely unpacks `.apk` packages without executing malware, computes SHA-256 hashes, flags data-harvesting permissions (`READ_SMS`, `RECEIVE_SMS`, `SEND_SMS`, `READ_CONTACTS`, `CAMERA`, `SYSTEM_ALERT_WINDOW`), and extracts embedded C2/payment URLs from `AndroidManifest.xml` and `.dex` bytecode.
-
-### 2. Explainable Risk Assessment & Case History
-* Assigns clear **HIGH RISK**, **MEDIUM RISK**, and **LOW RISK** classifications with transparent heuristic signal weights explaining *why* an artifact was flagged.
-* Searchable investigation queue with filtering by risk tier, impersonated brand, and evidence channel (`sms`, `web`, `apk`), plus side-by-side suspect vs. official brand visual comparison.
-
-### 3. Cross-Channel Campaign & Syndicate Attribution
-* Automatically correlates separate cases sharing common UPI VPAs, mobile numbers, domains, or crypto wallets into linked syndicate clusters.
-* Interactive network attribution graph visualizing shared infrastructure across messages, apps, and websites.
-
-### 4. R4C Police Investigation & Takedown Dossiers
-* One-click generation of structured **PDF** and **Markdown** evidence dossiers containing campaign timelines, linked cases, shared financial/telecom anchors, and actionable Section 91 CrPC / BNSS freeze/takedown recommendations.
-
-### 5. Trending Threat Heat-List
-* Real-time leaderboard of the most frequently reported scam domains, phone numbers, UPI payment handles, and impersonated institutions.
+1. **Multi-Channel Scam Proliferation:** Citizens are continuously targeted via fraudulent KYC, parcel delivery, electricity-bill, and job-offer messages carrying malicious phishing links across SMS, WhatsApp, and email.
+2. **Predatory Fake Loan & Investment Apps:** Malicious Android APKs masquerading as instant-loan or high-return trading platforms misuse sensitive permissions (contacts, SMS, call logs, screen overlays) to extort and defraud victims.
+3. **Deceptive Ponzi, MLM & Betting Websites:** Fraudulent web portals lure users with unrealistic guaranteed ROI schemes, fake regulatory badges, and rigged betting interfaces.
+4. **Siloed & Fragmented Investigations:** Although scam campaigns routinely reuse identical domains, app signing metadata, phone numbers, and UPI/bank/crypto accounts across channels, individual complaints are analyzed in isolation.
+5. **Lack of Explainable, Court-Ready Evidence:** Investigators lack a unified triage tool that produces transparent **Low / Medium / High** risk verdicts alongside structured, actionable dossiers for rapid takedown and bank/UPI freeze requests.
 
 ---
 
-## Project Architecture
+## 💡 Our Solution — THADAM (5 Core Pillars)
 
-```text
-rajasthan-hack/
-├── app/
-│   ├── streamlit_app.py       # Main RAKSHA-HACK 5-view Cyber-SOC web console
-│   └── theme.py               # Law-enforcement dark UI palette & indicator styling
-├── detect/
-│   └── ingest.py              # Artifact normalization & SQLite ingestion pipeline
-├── graph/
-│   └── build.py               # Interactive PyVis bipartite syndicate attribution graph
-├── report/
-│   └── takedown.py            # Automated PDF & Markdown law-enforcement dossier builder
-├── db.py                      # SQLite schema & connection manager (observations, verdicts, indicators, campaigns)
-├── config.yaml                # Monitored financial/UPI brands & detection configuration
-└── requirements.txt           # Python dependencies
+1. **Unified Multimodal Artifact Intake:** Ingests suspicious SMS/WhatsApp/email text, phishing URLs, fraudulent websites, Android APKs, and screenshots/QR codes inside a single investigator console.
+2. **Dialect-Aware Multilingual Scam NLP:** Detects social-engineering urgency lures, fake KYC/bill traps, and brand impersonation across English, Hindi, and 6 regional Rajasthani dialects (*Marwari, Mewari, Dhundhari, Hadoti, Mewati, Bagri*).
+3. **Safe Static-Only APK & Website Forensics:** Decompiles `AndroidManifest.xml` permissions and `.dex` bytecode strings while inspecting website DOM/payment trails in isolation—eliminating live malware execution risks.
+4. **Automated Identifier Extraction & Syndicate Correlation:** Automatically extracts UPI VPAs, `+91` phone numbers, look-alike domains, crypto wallets, and SHA-256 hashes, linking separate complaints that share infrastructure into unified syndicate campaigns.
+5. **Explainable Risk Scoring & One-Click Police Dossiers:** Computes transparent **Low / Medium / High** risk tiers backed by human-readable trigger reasons and exports investigation-ready PDF and Markdown evidence reports.
+
+---
+
+## 🌟 Novelty & Unique Selling Propositions (5 USPs)
+
+1. **Rajasthani Dialect & Code-Mixed Scam Intelligence:** Unlike generic English-only phishing filters, THADAM natively understands regional Rajasthani dialects and Hinglish coercion patterns used in localized rural and urban cyber frauds.
+2. **Cross-Channel Syndicate Graph Attribution:** Connects seemingly unrelated SMS lures, fake websites, and sideloaded APKs through shared payment trails (UPI/bank/crypto) and infrastructure pivots to expose the master syndicate behind multiple cases.
+3. **Zero-Execution Static Binary & Web Forensics:** Extracts embedded Command-and-Control (C2) endpoints, dangerous permission combinations, and payment handles statically in seconds without requiring heavy dynamic sandboxes.
+4. **Glass-Box Explainable Forensics for Law Enforcement:** Every risk score is paired with exact indicator provenance, feature weights, and rule justifications so investigators can defend findings in legal and banking freeze proceedings.
+5. **Instant Actionable Takedown & Freeze Readiness:** Bridges the gap between detection and enforcement by auto-formatting extracted indicators into ready-to-dispatch PDF/Markdown dossiers and live threat heat-lists.
+
+---
+
+## 🏗️ System Architecture
+
+<img width="1408" height="768" alt="Gemini_Generated_Image_oqpwywoqpwywoqpw" src="https://github.com/user-attachments/assets/580eb930-e362-491d-af77-ba4b97386f09" />
